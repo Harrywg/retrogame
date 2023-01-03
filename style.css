@@ -1,0 +1,329 @@
+body {
+    overflow: hidden;
+    background: rgb(39, 39, 39);
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    image-rendering: pixelated;
+    display: grid;
+    place-items: center;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.inactive {
+    display: none !important;
+}
+
+
+#canvas {
+    margin: 0;
+    background-color: green;
+    transform: scale(5);
+}
+
+@media (max-width: 640px),
+(max-height: 640px) {
+    #canvas {
+        transform: scale(4)
+    }
+
+    #ui-container {
+        transform: translate(-50%, -50%) scale(4) !important;
+    }
+
+    #menu-container {
+        transform: translate(-50%, -50%) scale(4) !important;
+    }
+}
+
+@media (max-width: 512px),
+(max-height: 512px) {
+    #canvas {
+        transform: scale(3)
+    }
+
+    #ui-container {
+        transform: translate(-50%, -50%) scale(3) !important;
+    }
+
+    #menu-container {
+        transform: translate(-50%, -50%) scale(3) !important;
+    }
+}
+
+#enemy {
+    height: 20px;
+    width: 20px;
+    clip-path: circle();
+}
+
+#ui-container {
+    position: absolute;
+    height: 128px;
+    width: 128px;
+    left: 50%;
+    top: 50%;
+    background-color: transparent;
+    transform: translate(-50%, -50%) scale(5);
+
+}
+
+#ui-top {
+    height: 25%;
+}
+
+#ui-middle {
+    height: 50%;
+
+
+}
+
+#ui-middle-wrap {
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.847);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+#ui-middle--controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left;
+    margin: 5px;
+    font-size: 6px;
+    color: grey;
+}
+
+#ui-middle--controls * {
+    margin: 0;
+}
+
+#ui-middle--leaderboard {
+    width: 50%;
+    background: rgba(66, 66, 66, 0.801);
+    overflow-y: scroll;
+
+}
+
+#ui-middle--leaderboard::-webkit-scrollbar {
+    display: none;
+}
+
+#ui-middle--leaderboard h1 {
+    text-align: center;
+    font-size: 6px;
+    margin: 0;
+}
+
+#ui-middle--leaderboard p {
+    font-size: 3px;
+    margin: 0;
+    text-align: center;
+
+}
+
+
+
+.ui-middle--leaderboard-component-wrap {
+    height: 10px;
+    background-color: black;
+    color: grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ui-middle--leaderboard-component-wrap * {
+    font-size: 4px;
+    margin-top: -1px;
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ui-middle--leaderboard-component-wrap *:first-child {
+    margin-top: 0;
+    font-size: 7px;
+}
+
+.ui-middle--leaderboard-component_name {}
+
+.ui-middle--leaderboard-component_name {}
+
+.ui-middle--leaderboard-component_time {}
+
+.ui-middle--leaderboard-component_score {}
+
+
+
+
+#ui-bottom {
+    background: transparent;
+    height: 25%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#ui-bottom--pause {
+    width: 26px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#ui-bottom--pause:active {
+    transform: scale(0.9);
+}
+
+#ui-bottom--pause_element {
+    height: 15px;
+    width: 3px;
+    background-color: rgba(0, 0, 0, 0.79);
+    overflow: visible;
+    cursor: pointer;
+
+}
+
+#ui-bottom--pause_element::after {
+    content: '';
+    display: block;
+    margin-left: 1px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.285);
+}
+
+#ui-bottom--play {
+    width: 26px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#ui-bottom--play:active {
+    transform: scale(0.9);
+}
+
+#ui-bottom--play_element {
+    background-color: rgba(0, 0, 0, 0.285);
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+#ui-bottom--play_element::after {
+    content: '';
+    display: block;
+    height: 14px;
+    width: 14px;
+    background-color: rgba(0, 0, 0, 0.79);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+#menu-container {
+    position: absolute;
+    height: 128px;
+    width: 128px;
+    left: 50%;
+    top: 50%;
+    background-color: rgb(55, 55, 55);
+    transform: translate(-50%, -50%) scale(5);
+    display: grid;
+    place-items: center;
+    margin: 0;
+}
+
+.button1 {
+    height: 25px;
+    width: 40px;
+    background: rgb(25, 25, 25);
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    color: grey;
+    font-family: 'DotGothic16', sans-serif;
+    border: 0;
+    outline: 0;
+    overflow: hidden;
+}
+
+.button1:hover {
+    color: whitesmoke;
+}
+
+.button1:active {
+    transform: scale(0.9)
+}
+
+.button1 h1 {
+    margin: 0;
+    margin-top: -1px;
+    font-size: 10px;
+}
+
+#you-died {
+    position: absolute;
+    height: 128px;
+    width: 128px;
+    left: 50%;
+    top: 50%;
+    background-color: rgba(61, 61, 61, 0.806);
+    transform: translate(-50%, -50%) scale(5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+#you-died p {
+    margin: 0;
+}
+
+#you-died h1 {
+    margin: 0;
+}
+
+#you-died button>h1 {
+    font-size: 7px !important;
+}
+
+#you-died--form-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+}
+
+#you-died input {
+    width: 30px;
+    height: 10px;
+    font-size: 6px;
+    border: 0;
+    outline: 0;
+    font-family: 'DotGothic16', sans-serif;
+
+}
+
+
+.smaller {
+    transform: scale(0.7);
+}
