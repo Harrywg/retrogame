@@ -24,6 +24,10 @@ body {
 
 @media (max-width: 640px),
 (max-height: 640px) {
+    body {
+        max-width: 640px
+    }
+
     #canvas {
         transform: scale(4)
     }
@@ -44,6 +48,10 @@ body {
 
 @media (max-width: 512px),
 (max-height: 512px) {
+    body {
+        max-width: 512px
+    }
+
     #canvas {
         transform: scale(3)
     }
@@ -64,6 +72,10 @@ body {
 
 @media (max-width: 380px),
 (max-height: 380px) {
+    body {
+        max-width: 380px
+    }
+
     #canvas {
         transform: scale(2.5)
     }
