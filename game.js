@@ -51,6 +51,7 @@ function fetchLeaderboard() {
 
     //Sort data based on score highest - lowest    
     function sortData(data) {
+        console.log(data[0])
         let sortedData = [];
         while (data.length > 0) {
             let index = findHighest(data);
@@ -61,18 +62,23 @@ function fetchLeaderboard() {
             let currentHighestScore = -1;
             let currentHighestScoreIndex;
             for (let i = 0; i < data.length; i++) {
+                if (!data[i].attributes.score) { data[i].attributes.score = 0 }
+                if (!data[i].attributes.name) { data[i].attributes.name = "anon" }
+
                 if (currentHighestScore < 0) {
-                    currentHighestScore = data[i].attributes.Score
+                    currentHighestScore = data[i].attributes.score
                     currentHighestScoreIndex = i;
                 }
-                else if (data[i].attributes.Score > currentHighestScore) {
-                    currentHighestScore = data[i].attributes.Score;
+                else if (data[i].attributes.score > currentHighestScore) {
+                    currentHighestScore = data[i].attributes.score;
                     console.log("Current highest score : " + currentHighestScore)
                     currentHighestScoreIndex = i;
                 }
+                console.log(currentHighestScore)
             }
             return currentHighestScoreIndex;
         }
+        console.log(sortedData)
         displayData(sortedData)
     }
 
