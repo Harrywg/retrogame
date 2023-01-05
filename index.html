@@ -13,79 +13,60 @@
 </head>
 
 <body>
-    <canvas id="canvas"></canvas>
-    <div id="ui-container">
-        <div id="ui-top"></div>
-        <div id="ui-middle">
-            <div id="ui-middle-wrap" class="inactive">
-                <div id="ui-middle--controls">
-                    <b>Controls</b>
-                    <p>WASD : Move</p>
-                    <p>SPACE : Attack</p>
+    <div id="main-container">
+        <canvas id="canvas"></canvas>
+        <div id="ui-main-container">
+            <div id="ui-container">
+                <div id="ui-top"></div>
+                <div id="ui-middle">
+                    <div id="ui-middle-wrap" class="inactive">
+                        <div id="ui-middle--controls">
+                            <b>Controls</b>
+                            <p>WASD : Move</p>
+                            <p>SPACE : Attack</p>
+                        </div>
+                        <div id="ui-middle--leaderboard">
+                            <h1>Leaderboard:</h1>
+                            <p>(scroll)</p>
+                        </div>
+                    </div>
                 </div>
-                <div id="ui-middle--leaderboard">
-                    <h1>Leaderboard:</h1>
-                    <p>(scroll)</p>
+                <div id="ui-bottom">
+                    <button id="ui-bottom--pause" onclick="handlePauseClick()">
+                        <div id="ui-bottom--pause_element"></div>
+                        <div id="ui-bottom--pause_element"></div>
+                    </button>
+                    <button class="inactive" id="ui-bottom--play">
+                        <div id="ui-bottom--play_element" onclick="handlePauseClick()"></div>
+                    </button>
                 </div>
             </div>
-        </div>
-        <div id="ui-bottom">
-            <button id="ui-bottom--pause" onclick="handlePauseClick()">
-                <div id="ui-bottom--pause_element"></div>
-                <div id="ui-bottom--pause_element"></div>
-            </button>
-            <button class="inactive" id="ui-bottom--play">
-                <div id="ui-bottom--play_element" onclick="handlePauseClick()"></div>
-            </button>
-        </div>
-    </div>
-    <div id="menu-container">
-        <button class="button1" onclick="handleStartGameClick()">
-            <h1>PLAY</h1>
-        </button>
-    </div>
-    <div id="you-died" class="inactive">
-        <h1>YOU DIED</h1>
-        <p>Score: 30</p>
-        <form onsubmit="return false">
-            <div id="you-died--form-wrap">
-                <label>NAME : </label>
-                <input id="you-died--input" required="yes" maxlength="10" type="text">
-            </div>
-            <div id="you-died--form-wrap">
-                <button class="button1 smaller" onclick="postData()">
-                    <h1>SUBMIT</h1>
-                </button>
-                <button class="button1 smaller" onclick="reload()">
-                    <h1>CANCEL</h1>
+            <div id="menu-container">
+                <button class="button1" onclick="handleStartGameClick()">
+                    <h1>PLAY</h1>
                 </button>
             </div>
-        </form>
+            <div id="you-died" class="inactive">
+                <h1>YOU DIED</h1>
+                <p>Score: 30</p>
+                <form onsubmit="return false">
+                    <div id="you-died--form-wrap">
+                        <label>NAME : </label>
+                        <input id="you-died--input" required="yes" maxlength="10" type="text">
+                    </div>
+                    <div id="you-died--form-wrap">
+                        <button class="button1 smaller" onclick="postData()">
+                            <h1>SUBMIT</h1>
+                        </button>
+                        <button class="button1 smaller" onclick="reload()">
+                            <h1>CANCEL</h1>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <script src="game.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyB9hDo5nvT1drxb60CwgQvGLNuCi26YWAo",
-            authDomain: "retro-game-fc7ab.firebaseapp.com",
-            projectId: "retro-game-fc7ab",
-            storageBucket: "retro-game-fc7ab.appspot.com",
-            messagingSenderId: "737008480873",
-            appId: "1:737008480873:web:6509df604de6d0ccfb68f8",
-            measurementId: "G-RMZR8YPFPS"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-    </script>
 </body>
 
 </html>
