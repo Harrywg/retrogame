@@ -1,8 +1,7 @@
 body {
     /* overflow: hidden; */
     background: rgb(39, 39, 39);
-    height: 100vh;
-    width: 100vw;
+
     margin: 0;
     image-rendering: pixelated;
     display: grid;
@@ -30,15 +29,15 @@ body {
     }
 
     #ui-container {
-        transform: translate(-50%, -50%) scale(4) !important;
+        transform: scale(4) !important;
     }
 
     #menu-container {
-        transform: translate(-50%, -50%) scale(4) !important;
+        transform: scale(4) !important;
     }
 
     #you-died {
-        transform: translate(-50%, -50%) scale(4) !important;
+        transform: scale(4) !important;
 
     }
 }
@@ -50,15 +49,15 @@ body {
     }
 
     #ui-container {
-        transform: translate(-50%, -50%) scale(3) !important;
+        transform: scale(3) !important;
     }
 
     #menu-container {
-        transform: translate(-50%, -50%) scale(3) !important;
+        transform: scale(3) !important;
     }
 
     #you-died {
-        transform: translate(-50%, -50%) scale(3) !important;
+        transform: scale(3) !important;
 
     }
 }
@@ -70,15 +69,15 @@ body {
     }
 
     #ui-container {
-        transform: translate(-50%, -50%) scale(2.5) !important;
+        transform: scale(2.5) !important;
     }
 
     #menu-container {
-        transform: translate(-50%, -50%) scale(2.5) !important;
+        transform: scale(2.5) !important;
     }
 
     #you-died {
-        transform: translate(-50%, -50%) scale(2.5) !important;
+        transform: scale(2.5) !important;
 
     }
 }
@@ -90,13 +89,13 @@ body {
 }
 
 #ui-container {
-    position: absolute;
+    grid-column: 1;
+    grid-row: 1;
     height: 128px;
     width: 128px;
-    left: 50%;
-    top: 50%;
+
     background-color: transparent;
-    transform: translate(-50%, -50%) scale(5);
+    transform: scale(5);
 
 }
 
@@ -269,13 +268,12 @@ body {
 }
 
 #menu-container {
-    position: absolute;
     height: 128px;
     width: 128px;
-    left: 50%;
-    top: 50%;
+    grid-column: 1;
+    grid-row: 1;
     background-color: rgb(55, 55, 55);
-    transform: translate(-50%, -50%) scale(5);
+    transform: scale(5);
     display: grid;
     place-items: center;
     margin: 0;
@@ -312,13 +310,12 @@ body {
 }
 
 #you-died {
-    position: absolute;
     height: 128px;
     width: 128px;
-    left: 50%;
-    top: 50%;
+    grid-column: 1;
+    grid-row: 1;
     background-color: rgba(61, 61, 61, 0.806);
-    transform: translate(-50%, -50%) scale(5);
+    transform: scale(5);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -361,13 +358,17 @@ body {
 }
 
 #ui-main-container {
-    height: 128px;
-    width: 128px;
+    height: 640px;
+    width: 640px;
     grid-column: 1;
     grid-row: 1;
+    display: grid;
+    place-items: center;
 }
 
 #main-container {
+    height: 100vh;
     display: grid;
     place-items: center;
+    overflow: hidden;
 }
