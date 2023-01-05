@@ -1,6 +1,6 @@
 
 //--- CREATING CANVAS ---
-const apiAddress = "http://localhost:1337/api/";
+const apiAddress = "https://strapi-production-e449.up.railway.app/api/";
 const canvas = document.getElementById('canvas');
 const canvasWidth = 128;
 const canvasHeight = 128;
@@ -45,7 +45,7 @@ function playerDeadEvent() {
 }
 
 function fetchLeaderboard() {
-    fetch(apiAddress + "scores")
+    fetch(apiAddress + "player-scores/")
         .then(res => res.json())
         .then(data => sortData(data.data))
 
@@ -82,8 +82,8 @@ function fetchLeaderboard() {
                 `
             <div class="ui-middle--leaderboard-component-wrap">
                 <div class="ui-middle--leaderboard-component_rank">${i + 1}</div>
-                <div class="ui-middle--leaderboard-component_name">${data.attributes.Name}</div>
-                <div class="ui-middle--leaderboard-component_score">${data.attributes.Score}pts</div>
+                <div class="ui-middle--leaderboard-component_name">${data.attributes.name}</div>
+                <div class="ui-middle--leaderboard-component_score">${data.attributes.score}pts</div>
             </div>
 
             `
@@ -98,11 +98,11 @@ function postData() {
     if (nameInput) {
         let formData = {
             "data": {
-                "Name": nameInput,
-                "Score": playerScore
+                "name": nameInput,
+                "score": playerScore
             }
         }
-        fetch('http://localhost:1337/api/scores/', {
+        fetch(apiAddress + "player-scores/", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
