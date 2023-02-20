@@ -12,16 +12,28 @@ const root = document.getElementById('root');
 let pauseStart;
 let pauseTime = 0;
 
-let gameRunning = true;
-
+let gameRunning = false;
+let gameStarted = false;
 // --- UI FUNCTIONS / API REQUESTS ---
 function handleStartGameClick() {
     timeStarted = Date.now();
-    startGame();
+    // startGame();
+    displayControls()
     document.getElementById('menu-container').classList.add('inactive')
 }
+
+function displayControls() {
+    function startGameEvent(e) {
+        if (e.code === "KeyD" || e.code === "KeyA" || e.code === "KeyW" || e.code === "KeyS" || e.code === "Escape") {
+            document.getElementById('controls-container').classList.add('inactive')
+            startGame();
+            window.removeEventListener('keydown', startGameEvent)
+        }
+    }
+    window.addEventListener('keydown', startGameEvent)
+}
 function handlePauseClick() {
-    if (gameRunning) {
+    if (gameStarted && gameRunning) {
         document.getElementById("ui-bottom--pause").classList.add("inactive")
         document.getElementById("ui-bottom--play").classList.remove("inactive")
         document.getElementById('ui-middle-wrap').classList.remove('inactive')
@@ -30,7 +42,7 @@ function handlePauseClick() {
 
 
     }
-    else {
+    else if (!gameRunning) {
         document.getElementById("ui-bottom--play").classList.add("inactive")
         document.getElementById("ui-bottom--pause").classList.remove("inactive")
         document.getElementById('ui-middle-wrap').classList.add('inactive')
@@ -40,6 +52,13 @@ function handlePauseClick() {
         startGame();
     }
 }
+window.addEventListener('keydown', (e) => {
+    if (e.code === "Escape") {
+        if (gameStarted) {
+            handlePauseClick();
+        }
+    }
+})
 function playerDeadEvent() {
     document.getElementById('you-died').classList.remove('inactive');
 }
@@ -412,6 +431,7 @@ function loadNextFrame() {
                 prevAttack = Date.now();
             }
         }
+
     })
     window.addEventListener('keyup', (event) => {
         if (event.key === "w" || event.key === "W") {
@@ -722,6 +742,8 @@ function loadNextFrame() {
 }
 loadNextFrame(); //loads 1 frame before player clicks 'PLAY' removing the load delay
 function startGame() {
+    gameRunning = true;
+    gameStarted = true;
     gameIntervalId = setInterval(loadNextFrame, 50)
 }
 

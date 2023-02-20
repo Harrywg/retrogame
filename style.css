@@ -45,6 +45,10 @@ body {
         transform: scale(4) !important;
     }
 
+    #controls-container {
+        transform: scale(4) !important;
+    }
+
     #you-died {
         transform: scale(4) !important;
 
@@ -74,6 +78,10 @@ body {
         transform: scale(3) !important;
     }
 
+    #controls-container {
+        transform: scale(3) !important;
+    }
+
     #you-died {
         transform: scale(3) !important;
 
@@ -100,6 +108,10 @@ body {
     }
 
     #menu-container {
+        transform: scale(2.5) !important;
+    }
+
+    #controls-container {
         transform: scale(2.5) !important;
     }
 
@@ -398,4 +410,35 @@ body {
     display: grid;
     place-items: center;
     overflow: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {}
+
+#controls-container {
+    height: 128px;
+    width: 128px;
+    grid-column: 1;
+    grid-row: 1;
+    background-color: rgba(55, 55, 55, 0.752);
+    transform: scale(5);
+    display: grid;
+    place-items: center;
+    margin: 0;
+
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    font-size: 10px;
+    color: black;
+    pointer-events: none;
+    gap: 5px;
+}
+
+#controls * {
+    margin: 0;
 }
